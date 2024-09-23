@@ -21,7 +21,8 @@ def pie_pagina(titulo_pag: str, descripcion_pag):
     col1, col2, col3 = st.columns([1, 5, 2])
 
     with col1:
-        st.image("Img/Logo IDEAL OSITO RGB.png", use_column_width=True)
+        st.image(r"img\Logo IDEAL OSITO RGB.png", use_column_width=True)
+
     with col2:
         st.title(titulo_pag)
         st.write(descripcion_pag, )
