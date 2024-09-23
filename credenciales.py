@@ -1,6 +1,4 @@
 import streamlit as st
-import pandas as pd
-import os
 
 def credenciales(perfil: str, contraseña: str):
 
