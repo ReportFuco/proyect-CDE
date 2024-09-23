@@ -18,7 +18,7 @@ def main(paginas):
     if pagina_seleccionada == "Página principal":
         funciones.pie_pagina(pagina_seleccionada, "Monitoreo en general de Control de Equipos")
         st.text('Instrucciones para el Llenado del "LAS"')
-        st.image("img\\Manual de movimientos LAS.png")
+        st.image(r"img/Manual de movimientos LAS.png")
 
     elif pagina_seleccionada == "Despacho CEDIS":
         funciones.pie_pagina(

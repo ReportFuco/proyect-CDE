@@ -1,6 +1,7 @@
 import pandas as pd
 from shareplum import Office365, Site
 from shareplum.site import Version
+import streamlit as st
 import pandas as pd
 from io import BytesIO
 import openpyxl as xlsx
@@ -13,8 +14,8 @@ def descargar_las(mes):
     
     authcookie = Office365(
             'https://gbconnect.sharepoint.com/',
-            username=os.getenv('SHAREPOINT_USERNAME'),
-            password=os.getenv('SHAREPOINT_PASSWORD')
+            username=st.secrets["Shareplum"]["user"],
+            password=st.secrets["Shareplum"]["password"]
             ).GetCookies()
 
     site_mov_kardex = Site(
