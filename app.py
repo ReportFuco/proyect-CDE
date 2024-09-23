@@ -1,9 +1,7 @@
 from datetime import datetime
 import plotly.express as px
 import streamlit as st
-import pandas as pd
 import funciones
-import locale
 import LAS
 import credenciales as cd
 
@@ -11,7 +9,6 @@ import credenciales as cd
 MES = "Septiembre"
 
 dia_hoy = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-locale.setlocale(locale.LC_TIME, 'es_ES')
 st.set_page_config("Control de Equipos", "img\\Logo IDEAL OSITO RGB.png", "wide", "collapsed")
 
 def main(paginas):
