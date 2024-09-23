@@ -74,6 +74,8 @@ if __name__ == "__main__":
         st.session_state.authenticated = False
 
     if not st.session_state.authenticated:
+        
+        funciones.pie_pagina("Login Seguimiento bandejas Control de equipos", "Debes ingresar tu usuario y contraseña")
 
         with st.form("Login control de Equipos", clear_on_submit=True):
 
