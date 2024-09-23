@@ -1,0 +1,8 @@
+streamlit
+pandas
+plotly
+gspread
+google-auth
+shareplum
+openpyxl
+urllib3
