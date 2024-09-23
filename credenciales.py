@@ -21,4 +21,4 @@ def credenciales(perfil: str, contraseña: str):
         "Recibidor": ["Página principal", "Certificación Planta"]
     }
 
-    return perfil, rol, accesos_rol.get(rol, [])
+    return perfil, rol, accesos_rol[rol]
