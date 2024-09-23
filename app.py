@@ -76,7 +76,7 @@ if __name__ == "__main__":
     if not st.session_state.authenticated:
 
         with st.form("Login control de Equipos", clear_on_submit=True):
-            funciones.pie_pagina("Login Control de Equipos", """Bienvenido a la página""")
+
             user = st.text_input("Usuario")
             password = st.text_input("Contraseña", type="password")
             submit_button = st.form_submit_button("Iniciar sesión")
