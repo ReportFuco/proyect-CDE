@@ -3,7 +3,6 @@ import funciones
 import LAS
 
 
-
 MES = "Septiembre"
 
 def main(paginas):
@@ -54,7 +53,6 @@ def main(paginas):
 
 
     elif pagina_seleccionada == "Reportes":
-
         funciones.pie_pagina(pagina_seleccionada, "Movimientos de retornos desde los centros de venta.")
 
         with st.spinner("Realizando descarga... espera unos minutos"):
@@ -71,7 +69,6 @@ if __name__ == "__main__":
         st.session_state.authenticated = False
 
     if not st.session_state.authenticated:
-        
         funciones.login_ideal()
     
     if st.session_state.authenticated:

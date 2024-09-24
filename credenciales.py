@@ -7,9 +7,8 @@ def credenciales(perfil: str, contraseña: str):
 
     if perfil in st.secrets["Credencials"]:
         datos_usuario = st.secrets["Credencials"][perfil]
-
+        
         if datos_usuario["password"] == contraseña:
-
             rol = datos_usuario["rol"]
         else:
             return None, None, "usuario y contraseña incorrectos"
