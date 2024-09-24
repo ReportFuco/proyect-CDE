@@ -174,15 +174,14 @@ def crear_formulario_cedis(nombre_formulario: str):
 def conexion_sheet_google(id):
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
     credentials_info = st.secrets["GOOGLE_CREDENTIALS"]
-        
-    # Crear las credenciales desde el diccionario en lugar de un archivo
-    credentials = service_account.Credentials.from_service_account_info(credentials_info, scopes=SCOPES)
+    credentials_JSON = json.loads(credentials_info)
+    credentials = service_account.Credentials.from_service_account_info(credentials_JSON, scopes=SCOPES)
     
-    # Autorizar con las credenciales y acceder a Google Sheets
     client = gspread.authorize(credentials)
     spreadsheet_id = id
     spreadsheet = client.open_by_key(spreadsheet_id)
     worksheet = spreadsheet.sheet1
+    
     return worksheet
 
 
