@@ -9,7 +9,7 @@ import credenciales as cd
 MES = "Septiembre"
 
 dia_hoy = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-st.set_page_config("Control de Equipos", "img\\Logo IDEAL OSITO RGB.png", "wide", "collapsed")
+st.set_page_config("Control de Equipos", "img/Logo IDEAL OSITO RGB.png", "wide", "collapsed")
 
 def main(paginas):
     """Código fuente del panel interactivo"""
