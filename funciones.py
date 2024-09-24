@@ -1,13 +1,12 @@
 from datetime import datetime, timedelta
 from google.oauth2 import service_account
+import plotly.express as px
+import credenciales as cd
 from PIL import Image
 import streamlit as st
 import pandas as pd
 import gspread
-import credenciales as cd
 import pytz
-import json
-import os
 import re
 
 
@@ -248,3 +247,30 @@ def cruce_camiones(dataframe_las):
 
 
     return df[["Conequip", "Agencia", "Fecha despacho Agencia", "Fecha llegada", "Bandejas enviadas", "Total certificado", "Destino", "Estado"]].reset_index(drop=True)
+
+
+class DashBoardCDE:
+    """Clase para implementar diferentes DashBoard al apartado de reportes"""
+    def __init__(self, Dataframe) -> None:
+        """Constructor de la clase que arma los datos
+         y los presenta en un DashBoard"""
+        self.dataframe = Dataframe
+
+    def grafico_barras(self, columna_x, columna_y, x_label, y_label, title, orientation = None, hover_data=None):
+        """Genera gráfico de barras"""
+        fig = px.bar(
+            self.dataframe, 
+            x=columna_x, 
+            y=columna_y,
+            orientation=orientation,
+            title=title,
+            labels={
+                columna_x: x_label,
+                columna_y: y_label
+            },
+            color_discrete_sequence=px.colors.qualitative.Bold
+        )
+
+        return st.plotly_chart(fig)
+    
+    
