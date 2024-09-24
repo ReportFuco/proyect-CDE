@@ -1,19 +1,14 @@
-from datetime import datetime
-import plotly.express as px
 import streamlit as st
 import funciones
-import pytz
 import LAS
-import credenciales as cd
+
 
 
 MES = "Septiembre"
-chile_tz = pytz.timezone('America/Santiago')
-dia_hoy = datetime.now(chile_tz).replace(hour=0, minute=0, second=0, microsecond=0)
 
 def main(paginas):
     """Código fuente del panel interactivo"""
-    
+
     st.set_page_config("Control de Equipos", "img/Logo IDEAL OSITO RGB.png", "wide", "collapsed")
     pagina_seleccionada = st.sidebar.selectbox("Páginas", paginas)
 

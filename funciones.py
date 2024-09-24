@@ -10,8 +10,8 @@ import json
 import os
 import re
 
-chile_tz = pytz.timezone('America/Santiago')
 
+chile_tz = pytz.timezone('America/Santiago')
 
 def validar_patente(patente):
     """Validar que la patente cumpla con el formato xx-xx-xx"""

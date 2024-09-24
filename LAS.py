@@ -6,8 +6,6 @@ import pandas as pd
 from io import BytesIO
 import openpyxl as xlsx
 from urllib.parse import unquote
-import os
-
 
 
 def descargar_las(mes):
