@@ -2,16 +2,21 @@ from datetime import datetime
 import plotly.express as px
 import streamlit as st
 import funciones
+import pytz
 import LAS
 import credenciales as cd
 
 
 MES = "Septiembre"
+chile_tz = pytz.timezone('America/Santiago')
 
-dia_hoy = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-st.set_page_config("Control de Equipos", "img\\Logo IDEAL OSITO RGB.png", "wide", "collapsed")
+dia_hoy = datetime.now(chile_tz).replace(hour=0, minute=0, second=0, microsecond=0)
+
 
 def main(paginas):
+
+    st.set_page_config("Control de Equipos", "img\\Logo IDEAL OSITO RGB.png", "wide", "collapsed")
+
     """Código fuente del panel interactivo"""
     pagina_seleccionada = st.sidebar.selectbox("Páginas", paginas)
 
@@ -75,22 +80,7 @@ if __name__ == "__main__":
 
     if not st.session_state.authenticated:
         
-        funciones.pie_pagina("Login Seguimiento bandejas Control de equipos", "Debes ingresar tu usuario y contraseña")
-
-        with st.form("Login control de Equipos", clear_on_submit=True):
-
-            user = st.text_input("Usuario")
-            password = st.text_input("Contraseña", type="password")
-            submit_button = st.form_submit_button("Iniciar sesión")
-
-        if submit_button:
-            perfil, rol, resultado = cd.credenciales(user, password)
-            if perfil:
-                st.session_state.authenticated = True
-                st.session_state.resultado = resultado
-                st.rerun()
-            else:
-                st.error(resultado)
+        funciones.login_ideal()
     
     if st.session_state.authenticated:
         main(st.session_state.resultado)

@@ -1,10 +1,12 @@
-import streamlit as st
-import pandas as pd
 from datetime import datetime, timedelta
 from google.oauth2 import service_account
+from PIL import Image
+import streamlit as st
+import pandas as pd
+import gspread
+import credenciales as cd
 import json
 import os
-import gspread
 import re
 
 
@@ -15,17 +17,44 @@ def validar_patente(patente):
         return True
     else:
         return False
-    
+
+
+def login_ideal():
+
+    st.set_page_config("Control de Equipos", "img\\Logo IDEAL OSITO RGB.png", "centered", "collapsed")
+    img = Image.open(r"img/Logo IDEAL OSITO RGB.png")
+
+    col1, col2 = st.columns([1,5])
+    with col1:
+        st.image(img.resize((img.width // 2, img.height // 2)))
+        with col2:
+            st.title("Portal Control Equipos")
+
+    with st.form("Login control de Equipos", clear_on_submit=True):
+        st.header("Iniciar sesión")
+        user = st.text_input("Usuario")
+        password = st.text_input("Contraseña", type="password")
+        submit_button = st.form_submit_button("Iniciar sesión")        
+
+        if submit_button:
+            perfil, rol, resultado = cd.credenciales(user, password)
+            if perfil:
+                st.session_state.authenticated = True
+                st.session_state.resultado = resultado
+                st.rerun()
+            else:
+                st.error(resultado)
+
 
 def pie_pagina(titulo_pag: str, descripcion_pag):
-    col1, col2, col3 = st.columns([1, 5, 2])
 
+    img = Image.open(r"img/Logo IDEAL OSITO RGB.png")
+    col1, col2, col3 = st.columns([1, 8, 2])
     with col1:
-        st.image(r"img/Logo IDEAL OSITO RGB.png", use_column_width=True)
-
+        st.image(img.resize((img.width // 2, img.height // 2)), use_column_width=True)
     with col2:
         st.title(titulo_pag)
-        st.write(descripcion_pag, )
+        st.write(descripcion_pag)
     with col3:
         st.write(f"Últ. actualización: {datetime.now().strftime("%d-%m-%y %H:%M")}")
     

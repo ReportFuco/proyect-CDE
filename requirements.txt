@@ -6,3 +6,5 @@ google-auth
 shareplum
 openpyxl
 urllib3
+pytz
+pillow
