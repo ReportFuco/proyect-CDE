@@ -5,9 +5,12 @@ import streamlit as st
 import pandas as pd
 import gspread
 import credenciales as cd
+import pytz
 import json
 import os
 import re
+
+chile_tz = pytz.timezone('America/Santiago')
 
 
 def validar_patente(patente):
@@ -56,7 +59,7 @@ def pie_pagina(titulo_pag: str, descripcion_pag):
         st.title(titulo_pag)
         st.write(descripcion_pag)
     with col3:
-        st.write(f"Últ. actualización: {datetime.now().strftime("%d-%m-%y %H:%M")}")
+        st.write(f"Últ. actualización: {datetime.now(chile_tz).strftime("%d-%m-%y %H:%M")}")
     
     st.divider()
 
