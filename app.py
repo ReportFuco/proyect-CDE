@@ -9,9 +9,7 @@ import credenciales as cd
 
 MES = "Septiembre"
 chile_tz = pytz.timezone('America/Santiago')
-
 dia_hoy = datetime.now(chile_tz).replace(hour=0, minute=0, second=0, microsecond=0)
-
 
 def main(paginas):
 
