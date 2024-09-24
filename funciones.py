@@ -21,7 +21,7 @@ def validar_patente(patente):
 
 def login_ideal():
 
-    st.set_page_config("Control de Equipos", "img\\Logo IDEAL OSITO RGB.png", "centered", "collapsed")
+    st.set_page_config("Control de Equipos", "img/Logo IDEAL OSITO RGB.png", "centered", "collapsed")
     img = Image.open(r"img/Logo IDEAL OSITO RGB.png")
 
     col1, col2 = st.columns([1,5])

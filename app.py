@@ -13,7 +13,7 @@ dia_hoy = datetime.now(chile_tz).replace(hour=0, minute=0, second=0, microsecond
 
 def main(paginas):
 
-    st.set_page_config("Control de Equipos", "img\\Logo IDEAL OSITO RGB.png", "wide", "collapsed")
+    st.set_page_config("Control de Equipos", "img/Logo IDEAL OSITO RGB.png", "wide", "collapsed")
 
     """Código fuente del panel interactivo"""
     pagina_seleccionada = st.sidebar.selectbox("Páginas", paginas)
