@@ -23,7 +23,7 @@ def main(paginas):
             el centro de ventas, debes registrar todos los equipos despachados desde 
             el Centro de Distribución.""")
         
-        col1, col2 = st.columns([3, 2])
+        col1, col2 = st.columns(2)
         
         with col1:
             datos_formulario, enviado = funciones.crear_formulario_cedis("Registro despacho ramplas")
