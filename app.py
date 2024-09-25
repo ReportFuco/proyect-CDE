@@ -63,13 +63,13 @@ def main(paginas):
         st.write("Estado de Rampla")
         st.dataframe(df_lleagada)
 
-        funciones.DashBoardCDE(df_lleagada).grafico_barras(
-            columna_x="Agencia",
-            columna_y="Bandejas enviadas",
-            title="Envío por agencia",
-            x_label="Agencias",
-            y_label="Cantidad de Bandejas"
-        )
+        # funciones.DashBoardCDE(df_lleagada).grafico_barras(
+        #     columna_x="Agencia",
+        #     columna_y="Bandejas enviadas",
+        #     title="Envío por agencia",
+        #     x_label="Agencias",
+        #     y_label="Cantidad de Bandejas"
+        # )
 
 if __name__ == "__main__":
 

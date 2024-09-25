@@ -256,7 +256,7 @@ class DashBoardCDE:
          y los presenta en un DashBoard"""
         self.dataframe = Dataframe
 
-    def grafico_barras(self, columna_x, columna_y, x_label, y_label, title, orientation = None, hover_data=None):
+    def grafico_barras(self, columna_x, columna_y, x_label, y_label, title, orientation = None):
         """Genera gráfico de barras"""
         fig = px.bar(
             self.dataframe, 
@@ -264,13 +264,9 @@ class DashBoardCDE:
             y=columna_y,
             orientation=orientation,
             title=title,
-            labels={
-                columna_x: x_label,
-                columna_y: y_label
-            },
+            labels={columna_x: x_label, columna_y: y_label},
             color_discrete_sequence=px.colors.qualitative.Bold
         )
 
         return st.plotly_chart(fig)
-    
     
