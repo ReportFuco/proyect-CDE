@@ -75,7 +75,7 @@ def crear_formulario(nombre_formulario: str):
     st.subheader("Certificación Rampla")
 
     with st.form(nombre_formulario, clear_on_submit=True):
-        fecha_registro = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        fecha_registro = datetime.now(chile_tz).strftime("%d-%m-%Y %H:%M:%S")
         ceve_origen = st.selectbox("Centro de ventas", agencias)
         destino = st.selectbox("Planta destino", ["Selecciona una Planta", "PLANTA QUILICURA", "PLANTA CHILLÁN"]) 
         conequip = st.number_input("Conequip", min_value=0, max_value=99999999, step=1, format="%d")
@@ -140,7 +140,7 @@ def crear_formulario_cedis(nombre_formulario: str):
 
     with st.form(nombre_formulario, clear_on_submit=True):
 
-        fecha_registro = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        fecha_registro = datetime.now(chile_tz).strftime("%d-%m-%Y %H:%M:%S")
         ceve = st.selectbox("Centro de ventas", agencias)
         conequip = st.number_input("Conequip", min_value=0, max_value=9999999, step=1, format="%d")
         patente_rampla = st.text_input("Patente de Rampla [XX-XX-XX]")    
@@ -214,12 +214,6 @@ def ultimos_registros_cedis():
 
     return st.dataframe(df[["Fecha", "Conequip", "Agencia", "Patente", "Total Bandejas"]], height= 890)
 
-
-def ultimos_tres_dias():
-    """Retorna los últimos 4 días para considerar"""
-    hoy = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-    return hoy - timedelta(4)
-
 def cruce_camiones(dataframe_las):
     """Cruce de camiones entre el tránsito"""
 
@@ -245,7 +239,6 @@ def cruce_camiones(dataframe_las):
 
     df["Total certificado"] = df["BG sin devolución"] + df["BME sin devolución"] + df["BCH sin devolución"] + df["BG con devolución"] + df["BME con devolución"] + df["BCH con devolución"]
     df["Total certificado"].fillna(0, inplace=True)
-
 
     return df[["Conequip", "Agencia", "Fecha despacho Agencia", "Fecha llegada", "Bandejas enviadas", "Total certificado", "Destino", "Estado"]].reset_index(drop=True)
 
