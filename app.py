@@ -23,7 +23,6 @@ def main(paginas, rol):
 
     elif pagina_seleccionada == "Despacho CEDIS":
 
-        st.set_page_config("Despacho CEDIS", "img/Logo IDEAL OSITO RGB.png", "wide", "collapsed")
         funciones.pie_pagina(
             pagina_seleccionada, 
             """Registro de bandejas despachadas desde el centro de distribución hasta 
@@ -43,7 +42,6 @@ def main(paginas, rol):
 
     elif pagina_seleccionada == "Certificación Planta":
 
-        st.set_page_config("Certificación Planta", "img/Logo IDEAL OSITO RGB.png", "wide", "collapsed")
         funciones.pie_pagina(
             pagina_seleccionada,
             """Registro de equipos recibidos en planta, se debe cuantificar toda la cantidad de Equipos
@@ -63,7 +61,6 @@ def main(paginas, rol):
 
     elif pagina_seleccionada == "Reportes":
 
-        st.set_page_config("Reportes", "img/Logo IDEAL OSITO RGB.png", "wide", "collapsed")
         funciones.pie_pagina(pagina_seleccionada, "Movimientos de retornos desde los centros de venta.")
 
         with st.spinner("Realizando descarga... espera unos minutos"):
