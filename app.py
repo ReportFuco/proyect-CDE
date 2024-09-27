@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 import funciones
 import LAS
 
@@ -12,11 +13,13 @@ def main(paginas, rol):
 
     if pagina_seleccionada == "Página principal":
         funciones.pie_pagina(pagina_seleccionada, "Monitoreo en general de Control de Equipos")
-        st.write(f"intrucciones para el llenado del {rol}")
+        st.write(f"intrucciones de uso: {rol}")
         if rol == "Despachador":
-            st.image(r"img/Manual de movimientos LAS.png")
+            img = Image.open(r"img/despacho_cedis.png")
+            st.image(img.resize((img.width // 2, img.height // 2)))
         elif rol == "Recibidor":
-            print("Yapo Erika apurese con las fotitos")
+            img = Image.open(r"img/certificacion_planta.png")
+            st.image(img.resize((img.width // 2, img.height // 2)))
         elif rol == "Recibidor chillán":
             print("Yapo Erika apurese con las fotitos")
 
