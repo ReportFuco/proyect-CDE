@@ -5,15 +5,14 @@ import LAS
 
 MES = "Septiembre"
 
-def main(paginas):
+def main(paginas, rol):
     """Código fuente del panel interactivo"""
-
     st.set_page_config("Control de Equipos", "img/Logo IDEAL OSITO RGB.png", "wide", "collapsed")
     pagina_seleccionada = st.sidebar.selectbox("Páginas", paginas)
 
     if pagina_seleccionada == "Página principal":
         funciones.pie_pagina(pagina_seleccionada, "Monitoreo en general de Control de Equipos")
-        st.text('Instrucciones para el Llenado del "LAS"')
+        st.write(f"intrucciones para el llenado del {rol}")
         st.image(r"img/Manual de movimientos LAS.png")
 
     elif pagina_seleccionada == "Despacho CEDIS":
@@ -72,4 +71,4 @@ if __name__ == "__main__":
         funciones.login_ideal()
     
     if st.session_state.authenticated:
-        main(st.session_state.resultado)
+        main(st.session_state.resultado, st.session_state.rol)

@@ -43,6 +43,7 @@ def login_ideal():
             if perfil:
                 st.session_state.authenticated = True
                 st.session_state.resultado = resultado
+                st.session_state.rol = rol
                 st.rerun()
             else:
                 st.error(resultado)
