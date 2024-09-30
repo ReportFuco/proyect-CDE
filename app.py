@@ -4,7 +4,7 @@ import funciones
 import LAS
 
 
-MES = "Septiembre"
+MES = "Octubre"
 
 def main(paginas, rol):
     """Código fuente del panel interactivo"""
