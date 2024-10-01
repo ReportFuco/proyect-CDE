@@ -100,6 +100,7 @@ def descargar_las(mes):
             for columna in df.columns[2:14]:
                 df[columna] = df[columna].astype(int)
         except ValueError as error:
+            index = 0
             valor_error = df[df[columna].apply(lambda x: isinstance(x, str))].reset_index()
             print(f"\nTienes {len(valor_error[columna])} errores en {columna.title()}\n")
             for error in valor_error:

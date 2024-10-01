@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from google.oauth2 import service_account
 import plotly.express as px
 import credenciales as cd
