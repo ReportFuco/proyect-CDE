@@ -97,7 +97,7 @@ def descargar_las(mes):
         df["Agencia"] = unquote(nombre_archivo).replace(f" ({mes}).xlsx", "").replace("Kardex ", "").upper()
 
         try:    
-            for columna in df.columns[2:14]:
+            for columna in df.columns[3:15]:
                 df[columna] = df[columna].astype(int)
         except ValueError as error:
             index = 0

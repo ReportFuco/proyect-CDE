@@ -64,7 +64,7 @@ def pie_pagina(titulo_pag: str, descripcion_pag):
     st.divider()
 
 
-def crear_formulario(nombre_formulario: str):
+def crear_formulario(nombre_formulario: str, user_rol):
     """Genera formulario para el registro de los movimientos LAS"""
 
     agencias = ['Selecciona una Agencia', 'ANTOFAGASTA', 'ARICA', 'CALAMA', 'CHILLAN', 'CONCEPCION', 
@@ -124,11 +124,11 @@ def crear_formulario(nombre_formulario: str):
             # Si todo está correcto, devolver los datos
             return [fecha_registro, ceve_origen, destino, conequip, patente_rampla.upper(), 
                     bg, bme_sin_dev, bch_sin_dev, pm_sin_dev, pn_sin_dev, pa_sin_dev, 
-                    bg_con_dev, bme_con_dev, bch_con_dev, pm_con_dev, pn_con_dev, pa_con_dev], boton_enviar
+                    bg_con_dev, bme_con_dev, bch_con_dev, pm_con_dev, pn_con_dev, pa_con_dev, user_rol], boton_enviar
     return None, None
 
 
-def crear_formulario_cedis(nombre_formulario: str):
+def crear_formulario_cedis(nombre_formulario: str, user_rol):
     """Genera formulario para el registro de los movimientos LAS"""
 
     agencias = ['Selecciona una Agencia', 'ANTOFAGASTA', 'ARICA', 'CALAMA', 'CHILLAN', 'CONCEPCION', 
@@ -167,7 +167,7 @@ def crear_formulario_cedis(nombre_formulario: str):
         else:
             # Si todo está correcto, devolver los datos
             return [fecha_registro, ceve, conequip, patente_rampla.upper(), 
-                    bg, bme, bch, pm, pn, pa], boton_enviar
+                    bg, bme, bch, pm, pn, pa, user_rol], boton_enviar
     return None, None
 
 
