@@ -23,7 +23,6 @@ def main(paginas, rol):
         elif rol == "Recibidor chillán":
             print("Yapo Erika apurese con las fotitos")
 
-
     elif pagina_seleccionada == "Despacho CEDIS":
 
         funciones.pie_pagina(
@@ -39,7 +38,6 @@ def main(paginas, rol):
             if enviado:
                 st.success("Registro realizado")
                 funciones.enviar_formulario(datos_formulario, "1ZImEypaWBpzAQN71ROnQnBd41dWbd63kLeDf6GJESu0")
-        
         with col2:
             funciones.ultimos_registros_cedis()
 
@@ -57,30 +55,23 @@ def main(paginas, rol):
             if enviado:
                 st.success("Registro realizado")
                 funciones.enviar_formulario(datos_formulario, "1_0UUt-WmP2Am_-AvbDXLr53EQ5aUn5qjNeBFdx6k63A")
-
         with col2:
             funciones.ultimos_registros_planta()
 
-
     elif pagina_seleccionada == "Reportes":
-
         funciones.pie_pagina(pagina_seleccionada, "Movimientos de retornos desde los centros de venta.")
-
         with st.spinner("Realizando descarga... espera unos minutos"):
             df_las = LAS.descargar_las(MES)
             df_lleagada = funciones.cruce_camiones(df_las)
             st.success("¡Descarga realizada con éxito!")
-
         st.write("Estado de Rampla")
-        st.dataframe(df_lleagada)
+        filtro_estado = st.selectbox("Estado", df_las["Estado"].unique())
+        st.dataframe(df_lleagada[df_lleagada["Estado"] == filtro_estado])
 
 if __name__ == "__main__":
-
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
-
     if not st.session_state.authenticated:
         funciones.login_ideal()
-    
     if st.session_state.authenticated:
         main(st.session_state.resultado, st.session_state.rol)
