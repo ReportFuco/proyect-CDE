@@ -70,14 +70,18 @@ def main(paginas, rol):
         with col1:
             filtro_estado = st.selectbox("Estado rampla", ["Todas"] + df_lleagada["Estado"].unique().tolist())
         with col2:
-            filtro_fecha = st.selectbox("Fecha envío",["Todas"] + df_lleagada["Agencia"].unique().tolist())
+            filtro_agencia = st.selectbox("Agencia", ["Todas"] + df_lleagada["Agencia"].unique().tolist())
+        with col3:
+            filtro_fecha = st.selectbox("Fecha envío", ["Todas"] + df_lleagada["Fecha despacho Agencia"].unique().tolist())
+
 
         df_filtrado = df_lleagada.copy()
 
         if filtro_estado != "Todas":
             df_filtrado = df_filtrado[df_filtrado["Estado"] == filtro_estado]
-        if filtro_fecha != "Todas":
-            df_filtrado = df_filtrado[df_filtrado["Agencia"] == filtro_fecha]
+        if filtro_agencia != "Todas":
+            df_filtrado = df_filtrado[df_filtrado["Agencia"] == filtro_agencia]
+        if filtro_fecha = df_filtrado[df_filtrado["Agencia"] == filtro_fecha]
 
         st.dataframe(df_filtrado)
                      
