@@ -7,7 +7,7 @@ from io import BytesIO
 import openpyxl as xlsx
 from urllib.parse import unquote
 
-@st.cache_data(ttl=600)
+@st.cache_data(ttl=600, show_spinner=False)
 def descargar_las(mes):
     
     authcookie = Office365(

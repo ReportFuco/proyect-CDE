@@ -64,8 +64,7 @@ def main(paginas, rol):
             df_las = LAS.descargar_las(MES)
             df_lleagada = funciones.cruce_camiones(df_las)
             st.success("¡Descarga realizada con éxito!")
-        st.write("Estado de Rampla")
-        filtro_estado = st.selectbox("Estado", df_lleagada["Estado"].unique())
+        filtro_estado = st.selectbox("Estado rampla", df_lleagada["Estado"].unique())
         st.dataframe(df_lleagada[df_lleagada["Estado"] == filtro_estado])
 
 if __name__ == "__main__":
