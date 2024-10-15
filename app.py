@@ -68,9 +68,9 @@ def main(paginas, rol):
         col1, col2, col3, col4 = st.columns(4)    
 
         with col1:
-            filtro_estado = st.selectbox("Estado rampla", df_lleagada["Estado"].unique())
+            filtro_estado = st.selectbox("Estado rampla", ["Todas"] + df_lleagada["Estado"].unique().tolist())
         with col2:
-            filtro_fecha = st.selectbox("Fecha envío", df_lleagada["Agencia"].unique())
+            filtro_fecha = st.selectbox("Fecha envío",["Todas"] + df_lleagada["Agencia"].unique().tolist())
 
         df_filtrado = df_lleagada.copy()
 
