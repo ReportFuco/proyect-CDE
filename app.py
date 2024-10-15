@@ -66,13 +66,20 @@ def main(paginas, rol):
             st.success("¡Descarga realizada con éxito!")
 
         col1, col2, col3, col4 = st.columns(4)    
-        
-        with col1:
-            filtro_estado = st.selectbox("Estado rampla", df_lleagada["Estado"].unique())
-        with col2:
-            filtro_fecha = st.selectbox("Fecha envío", df_lleagada["Fecha despacho Agencia"].unique())
 
-        st.dataframe(df_lleagada[(df_lleagada["Estado"] == filtro_estado) & (df_lleagada["Fecha despacho Agencia"] == filtro_fecha)])
+        with col1:
+            filtro_estado = st.selectbox("Estado rampla", ["Todas"] + df_lleagada["Estado"].unique())
+        with col2:
+            filtro_fecha = st.selectbox("Fecha envío", ["Todas"] + df_lleagada["Fecha despacho Agencia"].unique())
+
+        df_filtrado = df_lleagada.copy()
+
+        if filtro_estado != "Todas":
+            df_filtrado = df_filtrado[df_filtrado["Estado"] == filtro_estado]
+        if filtro_fecha != "Todas":
+            df_filtrado = df_filtrado[df_filtrado["Fecha despacho Agencia"] == filtro_fecha]
+
+        st.dataframe(df_filtrado)
                      
 
 if __name__ == "__main__":
