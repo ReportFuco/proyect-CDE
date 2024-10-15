@@ -70,7 +70,7 @@ def main(paginas, rol):
         with col1:
             filtro_estado = st.selectbox("Estado rampla", df_lleagada["Estado"].unique())
         with col2:
-            filtro_fecha = st.selectbox("Fecha envío", df_lleagada["Fecha despacho Agencia"].sort_values(ascending=False).unique())
+            filtro_fecha = st.selectbox("Fecha envío", df_lleagada["Fecha despacho Agencia"].unique())
 
         st.dataframe(df_lleagada[(df_lleagada["Estado"] == filtro_estado) & (df_lleagada["Fecha despacho Agencia"] == filtro_fecha)])
                      
