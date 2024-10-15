@@ -63,7 +63,6 @@ def main(paginas, rol):
         with st.spinner("Realizando descarga... espera unos minutos"):
             df_las = LAS.descargar_las(MES)
             df_lleagada = funciones.cruce_camiones(df_las)
-            st.success("¡Descarga realizada con éxito!")
 
         col1, col2, col3, col4 = st.columns(4)    
 
