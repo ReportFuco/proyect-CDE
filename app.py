@@ -64,8 +64,16 @@ def main(paginas, rol):
             df_las = LAS.descargar_las(MES)
             df_lleagada = funciones.cruce_camiones(df_las)
             st.success("¡Descarga realizada con éxito!")
-        filtro_estado = st.selectbox("Estado rampla", df_lleagada["Estado"].unique())
-        st.dataframe(df_lleagada[df_lleagada["Estado"] == filtro_estado])
+
+        col1, col2, col3, col4 = st.columns(4)    
+        
+        with col1:
+            filtro_estado = st.selectbox("Estado rampla", df_lleagada["Estado"].unique())
+        with col2:
+            filtro_fecha = st.selectbox("Fecha envío", df_lleagada["Fecha despacho Agencia"].sort_values(ascending=False).unique())
+
+        st.dataframe(df_lleagada[(df_lleagada["Estado"] == filtro_estado) & (df_lleagada["Fecha despacho Agencia"] == filtro_fecha)])
+                     
 
 if __name__ == "__main__":
     if "authenticated" not in st.session_state:
