@@ -81,7 +81,8 @@ def main(paginas, rol):
             df_filtrado = df_filtrado[df_filtrado["Estado"] == filtro_estado]
         if filtro_agencia != "Todas":
             df_filtrado = df_filtrado[df_filtrado["Agencia"] == filtro_agencia]
-        if filtro_fecha = df_filtrado[df_filtrado["Agencia"] == filtro_fecha]
+        if filtro_fecha != "Todas":
+            filtro_fecha = df_filtrado[df_filtrado["Agencia"] == filtro_fecha]
 
         st.dataframe(df_filtrado)
                      
