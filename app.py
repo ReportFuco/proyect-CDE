@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import streamlit as st
 from PIL import Image
 import funciones
@@ -86,8 +87,13 @@ def main(paginas, rol):
         st.dataframe(df_filtrado)
     
     elif pagina_seleccionada == "Kardex":
-        pass
-
+        fecha_seleccionada = st.date_input(
+            "Selecciona una fecha",
+            datetime.now().date() - timedelta(1))
+        
+    if st.button("Extraer Kardex"):
+        st.text(f"En desarrollo... {fecha_seleccionada}")
+        
 if __name__ == "__main__":
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
