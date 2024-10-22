@@ -92,7 +92,7 @@ def main(paginas, rol):
             datetime.now().date() - timedelta(1))
         
         if st.button("Extraer Kardex"):
-            st.text(f"En desarrollo... {fecha_seleccionada}")
+            st.text(f"En desarrollo... {fecha_seleccionada.strftime("%d.%m")}")
         
 if __name__ == "__main__":
     if "authenticated" not in st.session_state:
