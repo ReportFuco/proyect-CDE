@@ -51,11 +51,11 @@ class ExtraccionKardex:
         return BytesIO(contenido_archivo)
 
 
-    def extraer_kardex(self, carpeta, nombre_archivo):
+    def extraer_kardex(self, carpeta, nombre_archivo, fecha_descarga):
         """Extrae la información de los archivos Kardex y cambia el formato"""
         
         libro_kardex = openpyxl.load_workbook(self.descarga_archivo(carpeta, nombre_archivo), data_only=True)
-        active_sheet = libro_kardex[self.elegir_dia().strftime("%d.%m")]
+        active_sheet = libro_kardex[fecha_descarga.strftime("%d.%m")]
         max_row = active_sheet.max_row
 
         dic_kardex = {
@@ -89,7 +89,7 @@ class ExtraccionKardex:
 
         carpeta.upload_file(file_content, f"{self.dato_fecha().strftime('%d.%m.%y')}.csv")
 
-    def extraccion_kardex(self, mes_kardex):
+    def extraccion_kardex(self, mes_kardex, fecha_descarga):
         """Extracción del todos los Kardex a nivel nacional para transformarlos
         en un archivo CSV y mandarlo a sharepoint"""
         
@@ -98,7 +98,7 @@ class ExtraccionKardex:
 
             for centro, archivo in SALES_CENTER(mes_kardex)[carpeta].items():
 
-                df_extraccion = self.extraer_kardex(carpeta, archivo)
+                df_extraccion = self.extraer_kardex(carpeta, archivo, fecha_descarga)
                 df = pd.concat([df, df_extraccion], ignore_index=False)
 
         return df

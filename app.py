@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import streamlit as st
 from PIL import Image
 import funciones
+import kardex as kd
 import LAS
 
 
@@ -93,6 +94,13 @@ def main(paginas, rol):
         
         if st.button("Extraer Kardex"):
             st.text(f"En desarrollo... {fecha_seleccionada.strftime("%d.%m")}")
+            df_kardex = kd.ExtraccionKardex(
+                user=st.secrets["Shareplum"]["user"],
+                password=st.secrets["Shareplum"]["password"]
+            ).extraccion_kardex(MES, fecha_seleccionada)
+
+            st.dataframe(df_kardex)
+
         
 if __name__ == "__main__":
     if "authenticated" not in st.session_state:
