@@ -4,6 +4,7 @@ from shareplum import Office365, Site
 from shareplum.site import Version
 from urllib.parse import unquote
 from io import BytesIO
+from config import *
 import pandas as pd
 import openpyxl
 
@@ -12,14 +13,14 @@ class ExtraccionKardex:
     """Clase para las conecciones con Kardex y LAS para
       extraer y subir archivos de Sharepoint"""
     
-    def _init_(self, user, password, site):
+    def __init__(self, user, password):
         self.auth = Office365(
-            'https://gbconnect.sharepoint.com/', 
+            SITE_GB, 
             username=user, 
             password=password).GetCookies()
         
         self.site_kardex = Site(
-            site_url=site, 
+            site_url=SITE_DOWNLOAD_KARDEX, 
             version=Version.v365, 
             authcookie=self.auth)
         
@@ -81,12 +82,34 @@ class ExtraccionKardex:
         return df
 
     def guardar_kardex(self, df):
-        
-        site = Site("https://gbconnect.sharepoint.com/sites/MovimientosKardex/", version=Version.v365, authcookie=self.auth)
-        carpeta = site.Folder("Documentos%20compartidos/General/movimientos")
+
+        site = Site(SITE_UPLOAD_KARDEX, version=Version.v365, authcookie=self.auth)
+        carpeta = site.Folder(FOLDER_UPLOAD)
         file_content = df.read()
 
         carpeta.upload_file(file_content, f"{self.dato_fecha().strftime('%d.%m.%y')}.csv")
 
-    def extraccion_kardex():
-        pass
+    def extraccion_kardex(self, mes_kardex):
+        """Extracción del todos los Kardex a nivel nacional para transformarlos
+        en un archivo CSV y mandarlo a sharepoint"""
+        
+        df = pd.DataFrame()
+        for carpeta in SALES_CENTER(mes_kardex):
+
+            for centro, archivo in SALES_CENTER(mes_kardex)[carpeta].items():
+
+                df_extraccion = self.extraer_kardex(carpeta, archivo)
+                df = pd.concat([df, df_extraccion], ignore_index=False)
+
+        return df
+    
+
+
+if __name__=="__main__":
+    
+    ExtraccionKardex(
+        user="francisco.arancibia1@grupobimbo.com",
+        password="Bimbochile.0505"
+    )
+
+        
