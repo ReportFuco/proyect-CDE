@@ -16,7 +16,7 @@ def credenciales(perfil: str, contraseña: str):
         return None, None, "usuario no se encuentra en la base de datos"
 
     accesos_rol = {
-        "Administrador": ["Página principal", "Despacho CEDIS", "Certificación Planta", "Reportes"],
+        "Administrador": ["Página principal", "Despacho CEDIS", "Certificación Planta", "Reportes", "Kardex"],
         "Despachador": ["Página principal", "Despacho CEDIS"],
         "Recibidor": ["Página principal", "Certificación Planta"]
     }

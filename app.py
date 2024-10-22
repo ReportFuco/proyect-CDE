@@ -84,7 +84,9 @@ def main(paginas, rol):
             df_filtrado = df_filtrado[df_filtrado["Fecha despacho Agencia"] == filtro_fecha]
 
         st.dataframe(df_filtrado)
-                     
+    
+    elif pagina_seleccionada == "Kardex":
+        pass
 
 if __name__ == "__main__":
     if "authenticated" not in st.session_state:
