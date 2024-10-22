@@ -94,13 +94,13 @@ def main(paginas, rol):
             datetime.now().date() - timedelta(1))
         
         if st.button("Extraer Kardex"):
+            with st.spinner("Debes esperar la descarga del Kardex"):
+                df_kardex = kd.ExtraccionKardex(
+                    user=st.secrets["Shareplum"]["user"],
+                    password=st.secrets["Shareplum"]["password"]
+                ).extraccion_kardex(MONTH, fecha_seleccionada)
 
-            df_kardex = kd.ExtraccionKardex(
-                user=st.secrets["Shareplum"]["user"],
-                password=st.secrets["Shareplum"]["password"]
-            ).extraccion_kardex(MONTH, fecha_seleccionada)
-
-            st.dataframe(df_kardex)
+                st.dataframe(df_kardex)
 
         
 if __name__ == "__main__":
