@@ -4,6 +4,7 @@ import plotly.express as px
 import credenciales as cd
 from PIL import Image
 import streamlit as st
+from config import *
 import pandas as pd
 import gspread
 import pytz
@@ -172,11 +173,9 @@ def crear_formulario_cedis(nombre_formulario: str, user_rol):
 
 
 def conexion_sheet_google(id):
-    SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+
     credentials_info = st.secrets["GOOGLE_CREDENTIALS"]
-    # credentials_JSON = json.loads(credentials_info)
     credentials = service_account.Credentials.from_service_account_info(credentials_info, scopes=SCOPES)
-    
     client = gspread.authorize(credentials)
     spreadsheet_id = id
     spreadsheet = client.open_by_key(spreadsheet_id)
@@ -194,7 +193,7 @@ def ultimos_registros_planta():
     """Información de las bandejas certificadas en Planta"""
 
     st.subheader("Últimas certificaciones")
-    df = pd.read_csv("https://docs.google.com/spreadsheets/d/1_0UUt-WmP2Am_-AvbDXLr53EQ5aUn5qjNeBFdx6k63A/export?format=csv")
+    df = pd.read_csv(DATAFRAME_PLANTA)
     df["bandejas devolución"] = df["BG con devolución"] + df["BME con devolución"] + df["BCH con devolución"]
     df["Bandejas vacías"] = df["BG sin devolución"] + df["BME sin devolución"] + df["BCH sin devolución"]
     
@@ -207,7 +206,7 @@ def ultimos_registros_cedis():
     """Información de las bandejas certificadas en CEDIS"""
 
     st.subheader("Últimas certificaciones")
-    df = pd.read_csv("https://docs.google.com/spreadsheets/d/1ZImEypaWBpzAQN71ROnQnBd41dWbd63kLeDf6GJESu0/export?format=csv")
+    df = pd.read_csv(DATAFRAME_CEDIS)
     df["Total Bandejas"] = df["Bandeja Grande"] + df["Bandeja Mediana"] + df["Bandeja Chica"]
 
     df = df.sort_values(by="Fecha", ascending=False)
@@ -217,7 +216,7 @@ def ultimos_registros_cedis():
 def cruce_camiones(dataframe_las):
     """Cruce de camiones entre el tránsito"""
 
-    df_planta = pd.read_csv("https://docs.google.com/spreadsheets/d/1_0UUt-WmP2Am_-AvbDXLr53EQ5aUn5qjNeBFdx6k63A/export?format=csv")
+    df_planta = pd.read_csv(DATAFRAME_PLANTA)
     df_planta["Estado"] = "RECIBIDO"
 
     df = pd.merge(dataframe_las, df_planta, "outer", "Conequip")

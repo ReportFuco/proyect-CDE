@@ -9,6 +9,18 @@ FOLDER_UPLOAD = "Documentos%20compartidos/General/movimientos"
 # Configuración mes
 MONTH = "Octubre"
 
+# Google API´s
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+
+#Forms Google
+FORMS_PLANTA = "1_0UUt-WmP2Am_-AvbDXLr53EQ5aUn5qjNeBFdx6k63A"
+FORMS_CEDIS = "1ZImEypaWBpzAQN71ROnQnBd41dWbd63kLeDf6GJESu0"
+
+
+# Dataframes
+DATAFRAME_PLANTA = "https://docs.google.com/spreadsheets/d/1_0UUt-WmP2Am_-AvbDXLr53EQ5aUn5qjNeBFdx6k63A/export?format=csv"
+DATAFRAME_CEDIS = "https://docs.google.com/spreadsheets/d/1ZImEypaWBpzAQN71ROnQnBd41dWbd63kLeDf6GJESu0/export?format=csv"
+
 # Agencias
 def SALES_CENTER(mes): 
     return {
@@ -45,4 +57,3 @@ def SALES_CENTER(mes):
         "Serena": f"Kardex%20Serena%20({mes}).xlsx"
     }
 }
-

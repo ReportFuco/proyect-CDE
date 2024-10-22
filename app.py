@@ -38,7 +38,7 @@ def main(paginas, rol):
             datos_formulario, enviado = funciones.crear_formulario_cedis("Registro despacho ramplas", rol)
             if enviado:
                 st.success("Registro realizado")
-                funciones.enviar_formulario(datos_formulario, "1ZImEypaWBpzAQN71ROnQnBd41dWbd63kLeDf6GJESu0")
+                funciones.enviar_formulario(datos_formulario, FORMS_CEDIS)
         with col2:
             funciones.ultimos_registros_cedis()
 
@@ -55,7 +55,7 @@ def main(paginas, rol):
             datos_formulario, enviado = funciones.crear_formulario("Registro retorno ramplas", rol)
             if enviado:
                 st.success("Registro realizado")
-                funciones.enviar_formulario(datos_formulario, "1_0UUt-WmP2Am_-AvbDXLr53EQ5aUn5qjNeBFdx6k63A")
+                funciones.enviar_formulario(datos_formulario, FORMS_PLANTA)
         with col2:
             funciones.ultimos_registros_planta()
 
