@@ -6,6 +6,9 @@ SITE_DOWNLOAD_KARDEX = 'https://gbconnect.sharepoint.com/sites/KardexNacional905
 # Folder
 FOLDER_UPLOAD = "Documentos%20compartidos/General/movimientos"
 
+# Configuración mes
+MONTH = "Octubre"
+
 # Agencias
 def SALES_CENTER(mes): 
     return {

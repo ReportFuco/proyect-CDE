@@ -1,12 +1,11 @@
 from datetime import datetime, timedelta
 import streamlit as st
 from PIL import Image
+from config import *
 import funciones
 import kardex as kd
 import LAS
 
-
-MES = "Octubre"
 
 def main(paginas, rol):
     """Código fuente del panel interactivo"""
@@ -63,7 +62,7 @@ def main(paginas, rol):
     elif pagina_seleccionada == "Reportes":
         funciones.pie_pagina(pagina_seleccionada, "Movimientos de retornos desde los centros de venta.")
         with st.spinner("Realizando descarga... espera unos minutos"):
-            df_las = LAS.descargar_las(MES)
+            df_las = LAS.descargar_las(MONTH)
             df_lleagada = funciones.cruce_camiones(df_las)
 
         col1, col2, col3, col4 = st.columns(4)    
@@ -97,7 +96,7 @@ def main(paginas, rol):
             df_kardex = kd.ExtraccionKardex(
                 user=st.secrets["Shareplum"]["user"],
                 password=st.secrets["Shareplum"]["password"]
-            ).extraccion_kardex(MES, fecha_seleccionada)
+            ).extraccion_kardex(MONTH, fecha_seleccionada)
 
             st.dataframe(df_kardex)
 
