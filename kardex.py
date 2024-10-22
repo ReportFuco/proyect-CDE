@@ -89,5 +89,4 @@ class ExtraccionKardex:
         carpeta.upload_file(file_content, f"{self.dato_fecha().strftime('%d.%m.%y')}.csv")
 
     def extraccion_kardex():
-
-        pass
+        pass
