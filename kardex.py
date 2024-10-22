@@ -7,7 +7,6 @@ from io import BytesIO
 from config import *
 import pandas as pd
 import openpyxl
-from datetime import datetime
 
 
 class ExtraccionKardex:
