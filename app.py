@@ -93,7 +93,7 @@ def main(paginas, rol):
             datetime.now().date() - timedelta(1))
         
         if st.button("Extraer Kardex"):
-            st.text(f"En desarrollo... {fecha_seleccionada.strftime("%d.%m")}")
+
             df_kardex = kd.ExtraccionKardex(
                 user=st.secrets["Shareplum"]["user"],
                 password=st.secrets["Shareplum"]["password"]
