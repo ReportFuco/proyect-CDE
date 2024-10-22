@@ -87,6 +87,8 @@ def main(paginas, rol):
         st.dataframe(df_filtrado)
     
     elif pagina_seleccionada == "Kardex":
+        funciones.pie_pagina(pagina_seleccionada, "Movimientos del Kardex, puedes actualizar todos los dias dentro del Kardex")
+
         fecha_seleccionada = st.date_input(
             "Selecciona una fecha",
             datetime.now().date() - timedelta(1))
