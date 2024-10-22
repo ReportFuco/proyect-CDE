@@ -7,6 +7,7 @@ from io import BytesIO
 from config import *
 import pandas as pd
 import openpyxl
+from datetime import datetime
 
 
 class ExtraccionKardex:
@@ -60,14 +61,8 @@ class ExtraccionKardex:
 
         df.dropna(how="all", inplace=True)
         df["FECHA"] = fecha_descarga.strftime("%d-%m-%Y")
-        
-        csv_ram = BytesIO()
 
         df = df[["FECHA", "AGENCIA", "RUTA", "CANAL", "CARGA", "DEVOLUCION"]].reset_index(drop=True)
-        df.to_csv(csv_ram, index=False, sep=";", encoding="utf-8-sig")
-        csv_ram.seek(0)
-
-        self.guardar_kardex(csv_ram)
 
         return df
 
@@ -90,11 +85,12 @@ class ExtraccionKardex:
 
                 df_extraccion = self.extraer_kardex(carpeta, archivo, fecha_descarga)
                 df = pd.concat([df, df_extraccion], ignore_index=False)
+
+        csv_ram = BytesIO()
+
+        df.to_csv(csv_ram, index=False, sep=";", encoding="utf-8-sig")
+        csv_ram.seek(0)
                 
-        self.guardar_kardex(df, fecha_descarga)
+        self.guardar_kardex(df=csv_ram,fecha=fecha_descarga)
 
         return df
-    
-
-
-        
