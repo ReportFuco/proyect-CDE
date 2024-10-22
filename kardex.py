@@ -32,16 +32,6 @@ class ExtraccionKardex:
         else: 
             return dt.now() - timedelta(days=1)
         
-    
-    def elegir_dia(self):
-        while True:
-            dia_elegido = input("¿Extraer día anterior? [S/N]: ").upper()
-            if dia_elegido == "S":
-                return self.dato_fecha()
-            
-            elif dia_elegido == "N":
-                return dt.strptime(input("Elige un día [dd-mm-yyyy]: "), "%d-%m-%Y")
-
 
     def descarga_archivo(self, carpeta_sharepoint, nombre_archivo):
         
@@ -69,7 +59,7 @@ class ExtraccionKardex:
         df = pd.DataFrame(dic_kardex)
 
         df.dropna(how="all", inplace=True)
-        df["FECHA"] = self.elegir_dia().strftime("%d-%m-%Y")
+        df["FECHA"] = fecha_descarga.strftime("%d-%m-%Y")
         
         csv_ram = BytesIO()
 
@@ -81,13 +71,13 @@ class ExtraccionKardex:
 
         return df
 
-    def guardar_kardex(self, df):
+    def guardar_kardex(self, df, fecha):
 
         site = Site(SITE_UPLOAD_KARDEX, version=Version.v365, authcookie=self.auth)
         carpeta = site.Folder(FOLDER_UPLOAD)
         file_content = df.read()
 
-        carpeta.upload_file(file_content, f"{self.dato_fecha().strftime('%d.%m.%y')}.csv")
+        carpeta.upload_file(file_content, f"{fecha.strftime('%d.%m.%y')}.csv")
 
     def extraccion_kardex(self, mes_kardex, fecha_descarga):
         """Extracción del todos los Kardex a nivel nacional para transformarlos
@@ -100,6 +90,8 @@ class ExtraccionKardex:
 
                 df_extraccion = self.extraer_kardex(carpeta, archivo, fecha_descarga)
                 df = pd.concat([df, df_extraccion], ignore_index=False)
+                
+        self.guardar_kardex(df, fecha_descarga)
 
         return df
     
