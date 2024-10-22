@@ -45,7 +45,7 @@ class ExtraccionKardex:
 
     def descarga_archivo(self, carpeta_sharepoint, nombre_archivo):
         
-        carpeta = self.site.Folder((f"Documentos%20compartidos/{carpeta_sharepoint}"))
+        carpeta = self.site_kardex.Folder((f"Documentos%20compartidos/{carpeta_sharepoint}"))
         contenido_archivo = carpeta.get_file(nombre_archivo)
         
         return BytesIO(contenido_archivo)
@@ -104,12 +104,5 @@ class ExtraccionKardex:
         return df
     
 
-
-if __name__=="__main__":
-    
-    ExtraccionKardex(
-        user="francisco.arancibia1@grupobimbo.com",
-        password="Bimbochile.0505"
-    )
 
         
