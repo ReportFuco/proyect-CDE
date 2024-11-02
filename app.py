@@ -99,7 +99,7 @@ def main(paginas, rol):
                     user=st.secrets["Shareplum"]["user"],
                     password=st.secrets["Shareplum"]["password"]
                 ).extraccion_kardex(MONTH, fecha_seleccionada)
-                col1, col2, col3 = st.columns(2)
+                col1, col2, col3 = st.columns(3)
                 with col1:
                     st.dataframe(df_kardex)
                 with col2:
