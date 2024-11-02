@@ -110,8 +110,6 @@ def main(paginas, rol):
                     Bandejas despachadas: {df_kardex["CARGA"].sum()}.\n
                     Bandejas Retornadas: {df_kardex["DEVOLUCION"].sum()}.\n
                     """)
-
-
         
 if __name__ == "__main__":
     if "authenticated" not in st.session_state:
