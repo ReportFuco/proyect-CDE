@@ -106,9 +106,9 @@ def main(paginas, rol):
                     st.dataframe(df_kardex.groupby("AGENCIA")[["CARGA", "DEVOLUCION"]].sum())
                 with col3:
                     st.write(f"""
-                    Fecha: {fecha_seleccionada}
-                    Bandejas despachadas: {df_kardex["CARGA"].sum()}.
-                    Bandejas Retornadas: {df_kardex["DEVOLUCION"].sum()}.
+                    Fecha: {fecha_seleccionada}\n
+                    Bandejas despachadas: {df_kardex["CARGA"].sum()}.\n
+                    Bandejas Retornadas: {df_kardex["DEVOLUCION"].sum()}.\n
                     """)
 
 
