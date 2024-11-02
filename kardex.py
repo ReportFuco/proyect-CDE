@@ -3,6 +3,7 @@ from datetime import datetime as dt
 from shareplum import Office365, Site
 from shareplum.site import Version
 from urllib.parse import unquote
+import streamlit as st
 from io import BytesIO
 from config import *
 import pandas as pd
@@ -73,6 +74,7 @@ class ExtraccionKardex:
 
         carpeta.upload_file(file_content, f"{fecha.strftime('%d.%m.%y')}.csv")
 
+    @st.cache_data(ttl=600, show_spinner=False)
     def extraccion_kardex(self, mes_kardex, fecha_descarga):
         """Extracción del todos los Kardex a nivel nacional para transformarlos
         en un archivo CSV y mandarlo a sharepoint"""
@@ -89,7 +91,7 @@ class ExtraccionKardex:
             try:
                 df[serie] = df[serie].astype(int)
             except ValueError:
-                import streamlit as st
+                
                 st.warning("Debes corregir Kardex, tiene un dato string")
                 return df
 

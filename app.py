@@ -99,8 +99,12 @@ def main(paginas, rol):
                     user=st.secrets["Shareplum"]["user"],
                     password=st.secrets["Shareplum"]["password"]
                 ).extraccion_kardex(MONTH, fecha_seleccionada)
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.dataframe(df_kardex)
+                with col2:
+                    st.dataframe(df_kardex.groupby("AGENCIA")[["CARGA", "DEVOLUCION"]].sum())
 
-                st.dataframe(df_kardex)
 
         
 if __name__ == "__main__":
