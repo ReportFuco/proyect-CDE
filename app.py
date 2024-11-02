@@ -99,11 +99,17 @@ def main(paginas, rol):
                     user=st.secrets["Shareplum"]["user"],
                     password=st.secrets["Shareplum"]["password"]
                 ).extraccion_kardex(MONTH, fecha_seleccionada)
-                col1, col2 = st.columns(2)
+                col1, col2, col3 = st.columns(2)
                 with col1:
                     st.dataframe(df_kardex)
                 with col2:
                     st.dataframe(df_kardex.groupby("AGENCIA")[["CARGA", "DEVOLUCION"]].sum())
+                with col3:
+                    st.write(f"""
+                    Fecha: {fecha_seleccionada}
+                    Bandejas despachadas: {df_kardex["CARGA"].sum()}.
+                    Bandejas Retornadas: {df_kardex["DEVOLUCION"].sum()}.
+                    """)
 
 
         
