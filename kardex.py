@@ -85,6 +85,14 @@ class ExtraccionKardex:
                 df_extraccion = self.extraer_kardex(carpeta, archivo, fecha_descarga)
                 df = pd.concat([df, df_extraccion], ignore_index=False)
 
+        for serie in ["RUTA", "CARGA", "DEVOLUCION"]:
+            try:
+                df[serie] = df[serie].astype(int)
+            except ValueError:
+                import streamlit as st
+                st.warning("Debes corregir Kardex, tiene un dato string")
+                return df
+
         csv_ram = BytesIO()
 
         df.to_csv(csv_ram, index=False, sep=";", encoding="utf-8-sig")
