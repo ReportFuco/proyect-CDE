@@ -7,7 +7,7 @@ SITE_DOWNLOAD_KARDEX = 'https://gbconnect.sharepoint.com/sites/KardexNacional905
 FOLDER_UPLOAD = "Documentos%20compartidos/General/movimientos"
 
 # Configuración mes
-MONTH = "Octubre"
+MONTH = "Noviembre"
 
 # Google API´s
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
