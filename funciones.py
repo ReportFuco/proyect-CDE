@@ -211,7 +211,7 @@ def ultimos_registros_cedis():
 
     df = df.sort_values(by="Fecha", ascending=False)
 
-    return st.dataframe(df[["Fecha", "Conequip", "Agencia", "Patente", "Total Bandejas"]], height= 890)
+    return st.dataframe(df[["Fecha", "Conequip", "Agencia", "Total Bandejas"]], height= 890)
 
 def cruce_camiones(dataframe_las):
     """Cruce de camiones entre el tránsito"""
