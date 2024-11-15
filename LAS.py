@@ -72,21 +72,21 @@ def descargar_las(mes):
         dic_las ={
             "Fecha": [data[0].value for data in datos_las],
             "Conequip" : [data[1].value for data in datos_las],
-            "BG SIN DEV": [data[3].value for data in datos_las],
-            "BME SIN DEV": [data[4].value for data in datos_las],
-            "BCH SIN DEV": [data[5].value for data in datos_las],
+            "BG SIN DEV": [data[2].value for data in datos_las],
+            "BME SIN DEV": [data[3].value for data in datos_las],
+            "BCH SIN DEV": [data[4].value for data in datos_las],
             
-            "P. MADERA SIN DEV": [data[6].value for data in datos_las],
-            "P. NEGRO SIN DEV": [data[7].value for data in datos_las],
-            "P. AZUL SIN DEV": [data[8].value for data in datos_las],
+            "P. MADERA SIN DEV": [data[5].value for data in datos_las],
+            "P. NEGRO SIN DEV": [data[6].value for data in datos_las],
+            "P. AZUL SIN DEV": [data[7].value for data in datos_las],
             
-            "BG CON DEV": [data[9].value for data in datos_las],
-            "BME CON DEV": [data[10].value for data in datos_las],
-            "BCH CON DEV": [data[11].value for data in datos_las],
+            "BG CON DEV": [data[8].value for data in datos_las],
+            "BME CON DEV": [data[9].value for data in datos_las],
+            "BCH CON DEV": [data[10].value for data in datos_las],
             
-            "P. MADERA CON DEV": [data[12].value for data in datos_las],
-            "P. NEGRO CON DEV": [data[13].value for data in datos_las],
-            "P. AZUL CON DEV": [data[14].value for data in datos_las],
+            "P. MADERA CON DEV": [data[11].value for data in datos_las],
+            "P. NEGRO CON DEV": [data[12].value for data in datos_las],
+            "P. AZUL CON DEV": [data[13].value for data in datos_las],
         } 
 
         df = pd.DataFrame(dic_las)
