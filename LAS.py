@@ -67,12 +67,11 @@ def descargar_las(mes):
         sheet_las = kardex["LAS"]
         max_row = 2000
 
-        datos_las = sheet_las[f"L7:Z{max_row}"]
+        datos_las = sheet_las[f"K7:X{max_row}"]
         
         dic_las ={
             "Fecha": [data[0].value for data in datos_las],
             "Conequip" : [data[1].value for data in datos_las],
-            "Patente rampla": [data[2].value for data in datos_las],
             "BG SIN DEV": [data[3].value for data in datos_las],
             "BME SIN DEV": [data[4].value for data in datos_las],
             "BCH SIN DEV": [data[5].value for data in datos_las],
