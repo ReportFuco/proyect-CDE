@@ -55,7 +55,7 @@ def pie_pagina(titulo_pag: str, descripcion_pag):
     img = Image.open(r"img/Logo IDEAL OSITO RGB.png")
     col1, col2, col3 = st.columns([1, 8, 2])
     with col1:
-        st.image(img.resize((img.width // 2, img.height // 2)), use_column_width=True)
+        st.image(img.resize((img.width // 2, img.height // 2)), use_container_width=True)
     with col2:
         st.title(titulo_pag)
         st.write(descripcion_pag)
